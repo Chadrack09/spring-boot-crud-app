@@ -1,12 +1,10 @@
 package za.ac.cput.app.service;
 
 import org.springframework.stereotype.Service;
-import za.ac.cput.app.exceptions.EmployeeNotFoundException;
 import za.ac.cput.app.model.Employee;
 import za.ac.cput.app.repository.EmployeeRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Chadrack B. Boudzoumou
@@ -61,15 +59,8 @@ public class EmployeeService {
     empRepository.deleteById(id);
   }
 
-  public Employee update(Long id) {
-    return empRepository.findById(id).get();
-  }
-
-  public Employee get(Long id) throws EmployeeNotFoundException {
-    Optional optional = empRepository.findById(id);
-    if(optional.isPresent()) {
-      return (Employee) optional.get();
-    }
-    throw new EmployeeNotFoundException("Employee not found");
+  public void updateById(Employee employee) {
+    empRepository.updateById(employee.getId(), employee.getFirstname(),
+            employee.getLastname(), employee.getEmail());
   }
 }
