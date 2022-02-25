@@ -1,9 +1,10 @@
 package za.ac.cput.app.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import za.ac.cput.app.exceptions.EmployeeNotFoundException;
 import za.ac.cput.app.model.Employee;
 import za.ac.cput.app.service.EmployeeService;
 
@@ -79,5 +80,25 @@ public class EmployeeController {
     model.addAttribute("employee",
             empService.selectById(id));
     return "update";
+  }
+
+  /**
+   * <p>Find a single employe and commit changes to a new</p>
+   * @param id
+   * @param model
+   * @return String
+   */
+  @GetMapping("/UpdateEmployee/{id}")
+  public String updateEmployee(@PathVariable("id") Long id,
+                               Model model, RedirectAttributes redirect) {
+    try {
+      Employee employee = empService.get(id);
+      model.addAttribute("employee",employee);
+      return "redirect:/";
+    }
+    catch(EmployeeNotFoundException ex) {
+      redirect.addFlashAttribute("message", "The user was saved");
+              return "redirect:/";
+    }
   }
 }
