@@ -33,13 +33,13 @@ class EmployeeRepositoryTest {
             "Doe",
             "john@doe.com"));
   }
-//
-//  @Test
-//  public void update() {
-//    repository.updateById(
-//            "Rico",
-//            "Peter",
-//            "Pete@gmail.com",
-//            2l);
-//  }
+
+  @Test
+  public void update() {
+    repository.updateById(
+            "Rico",
+            "Peter",
+            "Pete@gmail.com",
+            2l);
+  }
 }
