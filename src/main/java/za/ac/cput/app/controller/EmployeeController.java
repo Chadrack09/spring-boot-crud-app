@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.app.model.Employee;
 import za.ac.cput.app.service.EmployeeService;
 
+import javax.validation.Valid;
+
 /**
  * @author Chadrack B. Boudzoumou
  * @email 219383847@mycput.ac.za
@@ -85,13 +87,14 @@ public class EmployeeController {
    * @return String
    */
   @PostMapping("/UpdateEmployee/{id}")
-  public String doUpdate(@ModelAttribute("employee") Employee emp,
-                         @PathVariable("id") Long id) {
-    empService.updateById(
-            emp.getFirstname(),
-            emp.getLastname(),
-            emp.getEmail(),
-            id);
+  public String doUpdate(@PathVariable("id") Long id,
+                         @ModelAttribute("employee") @Valid Employee employee) {
+
+    String firstname = employee.getFirstname();
+    String lastname = employee.getLastname();
+    String email = employee.getEmail();
+
+    empService.updateEmployee(firstname, lastname, email, id);
     return "redirect:/";
   }
 

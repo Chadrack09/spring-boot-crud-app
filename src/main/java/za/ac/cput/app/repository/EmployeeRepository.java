@@ -22,9 +22,9 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
+  @Modifying
   @Transactional
-  @Modifying(clearAutomatically = true)
-  @Query(name = "UPDATE Employee SET firstname = ?1, " +
+  @Query(value = "UPDATE Employee SET firstname = ?1, " +
           "lastname = ?2, email = ?3 WHERE id = ?4", nativeQuery = true)
-  public void updateById(String firstname, String lastname, String email, Long id);
+  void updateById(String firstname, String lastname, String email, Long id);
 }

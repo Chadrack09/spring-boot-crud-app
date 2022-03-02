@@ -13,21 +13,21 @@
           th:object="${employee}" method="POST" class="border" style="padding: 32px">
         <h1>Update Employee</h1>
         <div class="mb-3">
-            <input type="hidden" class="form-control" th:value="${employee.id}">
+            <input type="hidden" class="form-control" th:field="${employee.id}">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" th:value="${employee.email}"
+            <input type="email" class="form-control" th:field="${employee.email}"
                    id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" th:value="${employee.firstname}"
+            <input type="text" th:field="${employee.firstname}"
                    class="form-control" id="firstName">
         </div>
         <div class="mb-3">
             <label for="lastname" class="form-label">Last Name</label>
-            <input type="text" th:value="${employee.lastname}"
+            <input type="text" th:field="${employee.lastname}"
                    class="form-control" id="lastname">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
