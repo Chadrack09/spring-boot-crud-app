@@ -59,8 +59,7 @@ public class EmployeeService {
     empRepository.deleteById(id);
   }
 
-  public void updateById(Employee employee) {
-    empRepository.updateById(employee.getId(), employee.getFirstname(),
-            employee.getLastname(), employee.getEmail());
+  public void updateById(String firstname, String lastname, String email, Long id) {
+    empRepository.updateById(firstname, lastname, email, id);
   }
 }

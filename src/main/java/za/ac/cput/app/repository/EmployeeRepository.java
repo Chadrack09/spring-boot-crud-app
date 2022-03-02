@@ -1,9 +1,11 @@
 package za.ac.cput.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import za.ac.cput.app.model.Employee;
 
 import java.util.Optional;
@@ -20,8 +22,9 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-  @Query("UPDATE Employee e SET e.firstname = :firstname, " +
-          "e.lastname = :lastname, e.email = :email WHERE e.id = :id")
-  public void updateById(@Param("id") Long id, @Param("firstname") String firstname,
-                         @Param("lastname") String lastname, @Param("email") String email);
+  @Transactional
+  @Modifying(clearAutomatically = true)
+  @Query(name = "UPDATE Employee SET firstname = ?1, " +
+          "lastname = ?2, email = ?3 WHERE id = ?4", nativeQuery = true)
+  public void updateById(String firstname, String lastname, String email, Long id);
 }

@@ -85,8 +85,13 @@ public class EmployeeController {
    * @return String
    */
   @PostMapping("/UpdateEmployee/{id}")
-  public String doUpdate(@PathVariable("id") Long id, @ModelAttribute("employee") Employee emp) {
-    empService.updateById(emp);
+  public String doUpdate(@ModelAttribute("employee") Employee emp,
+                         @PathVariable("id") Long id) {
+    empService.updateById(
+            emp.getFirstname(),
+            emp.getLastname(),
+            emp.getEmail(),
+            id);
     return "redirect:/";
   }
 
