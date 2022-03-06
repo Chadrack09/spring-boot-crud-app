@@ -1,6 +1,6 @@
 ### Employe CRUD App
 Simple Employee CRUD Application with Spring Boot, Spring Data JPA, Thymeleaf
-and MySQL.
+and Postgres.
 
 [**Deployment link** >](https://spring-boot-simple-crud.herokuapp.com/)
 > By Chaadrack Boudzoumou<br />
