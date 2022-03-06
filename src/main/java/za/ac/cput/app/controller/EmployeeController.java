@@ -73,7 +73,7 @@ public class EmployeeController {
    *
    * @param     id
    * @param     model
-   * @return    Return string that indicate the name of the view
+   * @return    Return string indicating name of the view
    */
   @GetMapping("/ShowEmployee/{id}")
   public String showEmployee(@PathVariable("id") Long id, Model model) {
