@@ -18,13 +18,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
-    - name: Deploy to Heroku  
-      uses: AkhileshNS/heroku-deploy@v3.12.12   
-
+    - name: Deploy to Heroku
+      uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{secrets.APP_KEY}}
         heroku_email: ${{secrets.APP_EMAIL}}
         heroku_app_name: ${{secrets.APP_NAME}}
-        
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
