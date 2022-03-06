@@ -32,9 +32,9 @@ public class DBIntializer implements CommandLineRunner {
                     "john@doe.org"
             ),
             new Employee(
-                    "Farrel",
+                    "Mark",
                     "Siya",
-                    "siya@farrel.com"
+                    "siya@mark.com"
             )
     ));
   }
