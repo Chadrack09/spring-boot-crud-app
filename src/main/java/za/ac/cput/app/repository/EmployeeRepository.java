@@ -3,12 +3,9 @@ package za.ac.cput.app.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.cput.app.model.Employee;
-
-import java.util.Optional;
 
 /**
  * @author Chadrack B. Boudzoumou
@@ -22,8 +19,8 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-  @Modifying
   @Transactional
+  @Modifying(clearAutomatically = true)
   @Query(value = "UPDATE Employee SET firstname = ?1, " +
           "lastname = ?2, email = ?3 WHERE id = ?4", nativeQuery = true)
   void updateById(String firstname, String lastname, String email, Long id);

@@ -6,8 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.app.model.Employee;
 import za.ac.cput.app.service.EmployeeService;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @author Chadrack B. Boudzoumou
  * @email 219383847@mycput.ac.za

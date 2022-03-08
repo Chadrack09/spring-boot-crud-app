@@ -97,6 +97,4 @@ public class EmployeeController {
     empService.updateEmployee(firstname, lastname, email, id);
     return "redirect:/";
   }
-
-  // Test controller
 }
